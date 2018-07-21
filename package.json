@@ -1,7 +1,7 @@
 {
   "name": "mango",
   "version": "0.0.1",
-  "description": "资产视图前端项目",
+  "description": "一个简单的基于gulp+rollup和gulp-atk，支持ES6/7特性的多页开发框架",
   "main": "false",
   "scripts": {
     "test": "./node_modules/.bin/gulp test",
