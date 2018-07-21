@@ -29,32 +29,10 @@ gulp.task('default', function (next) {
       plugins: [
         resolve(), // tells Rollup how to find date-fns in node_modules
         commonjs(), // converts date-fns to ES modules
-        babel({
-          babelrc: false,
-          "presets": [
-            "es2015-rollup",
-            "flow",
-            "stage-3"
-          ],
-          "plugins": [
-            ["transform-class-properties",
-            {
-              "spec": true
-            }],
-            [
-              "transform-runtime",
-              {
-                "helpers": false,
-                "polyfill": false,
-                "regenerator": true,
-                "moduleName": "babel-runtime"
-              }
-            ]
-          ]
-        })
+        babel()
       ]
     }, {
-        format: 'iife'
+        format: 'umd'
       }))
     .pipe(sourcemaps.write('../maps/',{addComment: false}))
     .pipe(gulp.dest('dist'));

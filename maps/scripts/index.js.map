@@ -1,1 +1,0 @@
-{"version":3,"file":"../../src/scripts/index.js","sources":["src/scripts/index.js"],"sourcesContent":["import Eagle from 'eagle';\n\nconst Index = Eagle.extend({\n\n});"],"names":["Index","Eagle","extend"],"mappings":";;;;;CAEA,IAAMA,QAAQC,MAAMC,MAAN,CAAa,EAAb,CAAd;;;;"}

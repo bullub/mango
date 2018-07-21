@@ -1,7 +1,7 @@
 [*]
 end_of_line = lf
 
-[*.{js,html,css,less,sass,stylus,ejs,json,xml,yml,md}]
+[*.{js,html,css,less,sass,stylus,ejs,json,xml,yml,md,yaml}]
 charset = utf-8
 indent_style = space
 indent_size = 2

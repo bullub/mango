@@ -1,6 +1,7 @@
+import Eagle from 'eagle';
 const Home = Eagle.extend({
-  constructor: function Home() {
-    //调用父类构造器
+  // eslint-disable-next-line
+  constructor: function Home(rootElement) {
     Home._Parent(this, arguments);
     this.$root.html('123');
   },
@@ -14,4 +15,5 @@ const Home = Eagle.extend({
   eventHandlers: {
   }
 });
-let home = new Home();
+
+new Home();
