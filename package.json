@@ -1,0 +1,46 @@
+{
+  "name": "mango",
+  "version": "0.0.1",
+  "description": "资产视图前端项目",
+  "main": "false",
+  "scripts": {
+    "test": "./node_modules/.bin/gulp test",
+    "dev": "./node_modules/.bin/gulp --dev",
+    "stg": "./node_modules/.bin/gulp --stg",
+    "uat": "./node_modules/.bin/gulp --uat",
+    "prd": "./node_modules/.bin/gulp --prd"
+  },
+  "repository": "https://github.com/bullub/mango.git",
+  "author": "bullub <123572970@qq.com>",
+  "license": "Private",
+  "private": true,
+  "dependencies": {
+    "babel-runtime": "^6.26.0",
+    "eagle": "git+https://github.com/bullub/eagle.git",
+    "gulp": "^4.0.0",
+    "gulp-eslint": "^5.0.0",
+    "jquery": "^3.3.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-es2015-rollup": "^3.0.0",
+    "babel-preset-flow": "^6.23.0",
+    "babel-preset-latest": "^6.24.1",
+    "babel-preset-stage-3": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "gulp-better-rollup": "^3.3.0",
+    "gulp-mock-server": "^1.1.4",
+    "gulp-sourcemaps": "^2.6.4",
+    "rollup": "^0.63.3",
+    "rollup-plugin-babel": "^3.0.7",
+    "rollup-plugin-commonjs": "^9.1.3",
+    "rollup-plugin-multi-entry": "^2.0.2",
+    "rollup-plugin-node-builtins": "^2.1.2",
+    "rollup-plugin-node-resolve": "^3.3.0",
+    "rollup-plugin-sourcemaps": "^0.4.2",
+    "rollup-plugin-uglify": "^4.0.0"
+  }
+}
