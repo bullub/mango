@@ -2,7 +2,7 @@
 
 module.exports = {
   // 继承eslint推荐的默认规则
-  "extends": "eslint:recommended",
+  // "extends": "eslint:recommended",
   // 环境定义了预定义的全局变量。更多在官网查看
   "env": {
     "browser": true,
@@ -14,7 +14,11 @@ module.exports = {
   "parserOptions": {
     // ECMAScript 版本
     "ecmaVersion": 7,
-    "sourceType": "module", // modul
+    "sourceType": "module", // module
+    "ecmaFeatures": {
+      // 打开一些实验性的功能的校验
+      "experimentalObjectRestSpread": true
+    }
   },
   /**
    * "off" 或 0 - 关闭规则
@@ -162,8 +166,6 @@ module.exports = {
     "no-empty-pattern": 2,
     // 不允许case子句中使用词法声明
     "no-case-declarations": 2,
-    // 强制在点号之前和之后一致的换行
-    "dot-location": 0,
     // 禁止抛出异常字面量
     "no-throw-literal": 1,
     // 禁用逗号操作符
@@ -175,7 +177,7 @@ module.exports = {
     // 禁止在 return 语句中使用赋值语句
     "no-return-assign": 2,
     // 禁用魔术数字
-    "no-magic-numbers": 1,
+    "no-magic-numbers": 0,
     // 强制数组方括号中使用一致的空格
     "array-bracket-spacing": 1,
     // 强制使用骆驼拼写法命名约定
@@ -190,6 +192,7 @@ module.exports = {
     "no-nested-ternary": 2,
     // 禁用 Object 的构造函数
     "no-new-object": 1,
+    "indent": [1, 2, {"SwitchCase": 1}],
 
     "no-restricted-properties": [2, {
       "property": "__defineGetter__",

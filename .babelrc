@@ -3,5 +3,22 @@
     ["es2015"],
     "flow",
     "stage-3"
+  ],
+  "plugins": [
+    [
+      "transform-class-properties",
+      {
+        "spec": true
+      }
+    ],
+    [
+      "transform-runtime",
+      {
+        "helpers": false,
+        "polyfill": false,
+        "regenerator": true,
+        "moduleName": "babel-runtime"
+      }
+    ]
   ]
 }

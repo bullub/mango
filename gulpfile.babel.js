@@ -19,19 +19,26 @@ import mockServer from 'gulp-mock-server';
 // 使用eslint做代码风格检查
 import eslint from 'gulp-eslint';
 
+
+const config = utils.getConfig();
+
+console.dir(config);
+
+
 gulp.task('default', function (next) {
   return gulp.src('src/scripts/**/*.js', {
-      base: 'src'
-    })
+    base: 'src'
+  })
     .pipe(sourcemaps.init())
-    .pipe(rollup({
-      external: ['eagle', 'jquery'],
-      plugins: [
-        resolve(), // tells Rollup how to find date-fns in node_modules
-        commonjs(), // converts date-fns to ES modules
-        babel()
-      ]
-    }, {
+    .pipe(
+      rollup({
+        external: ['eagle', 'jquery'],
+        plugins: [
+          resolve(), // tells Rollup how to find date-fns in node_modules
+          commonjs(), // converts date-fns to ES modules
+          babel()
+        ]
+      }, {
         format: 'umd'
       }))
     .pipe(sourcemaps.write('../maps/', { addComment: false }))
