@@ -21,8 +21,8 @@ import eslint from 'gulp-eslint';
 
 gulp.task('default', function (next) {
   return gulp.src('src/scripts/**/*.js', {
-    base: 'src'
-  })
+      base: 'src'
+    })
     .pipe(sourcemaps.init())
     .pipe(rollup({
       external: ['eagle', 'jquery'],
@@ -34,6 +34,6 @@ gulp.task('default', function (next) {
     }, {
         format: 'umd'
       }))
-    .pipe(sourcemaps.write('../maps/',{addComment: false}))
+    .pipe(sourcemaps.write('../maps/', { addComment: false }))
     .pipe(gulp.dest('dist'));
 });

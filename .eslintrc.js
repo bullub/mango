@@ -163,7 +163,7 @@ module.exports = {
     // 不允许case子句中使用词法声明
     "no-case-declarations": 2,
     // 强制在点号之前和之后一致的换行
-    "dot-location": 1,
+    "dot-location": 0,
     // 禁止抛出异常字面量
     "no-throw-literal": 1,
     // 禁用逗号操作符
