@@ -1,10 +1,11 @@
 import environment from './environment';
 import atkConfig from '../config/atk-config';
 import rule from '../config/ax-rule';
-import devAccessConfig from '../config/ax-access.dev';
-import stgAccessConfig from '../config/ax-access.stg';
-import uatAccessConfig from '../config/ax-access.uat';
-import prdAccessConfig from '../config/ax-access.prd';
+import devAccessConfig from '../config/access.dev';
+import stgAccessConfig from '../config/access.stg';
+import uatAccessConfig from '../config/access.uat';
+import prdAccessConfig from '../config/access.prd';
+import buildConfig from '../config/build-config';
 
 import _ from 'lodash';
 
@@ -14,6 +15,7 @@ const ENV_UAT = 'uat';
 const ENV_PRD = 'prd';
 
 const CONFIG = {
+  buildConfig,
   atkConfig,
   rule,
   access: {
@@ -35,7 +37,8 @@ export default {
  */
 function readConfigByAccessEnv(accessEnv) {
   return {
-    atkConfig: _.merge(CONFIG.atkConfig, CONFIG.access[accessEnv]),
+    buildConfig: _.merge(CONFIG.atkConfig, CONFIG.access[accessEnv].buildConfig),
+    atkConfig: _.merge(CONFIG.atkConfig, CONFIG.access[accessEnv].atkConfig),
     rule: CONFIG.rule
   };
 }

@@ -20,6 +20,9 @@ export default {
     //不要移除svg的viewbox属性
     svgoPlugins: [{ removeViewBox: false }]
   },
+  rollupOptions: {
+
+  },
   // 构建Zip包
   zip: {
     // 是否启用

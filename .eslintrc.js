@@ -192,7 +192,7 @@ module.exports = {
     "no-nested-ternary": 2,
     // 禁用 Object 的构造函数
     "no-new-object": 1,
-    "indent": [1, 2, {"SwitchCase": 1}],
+    "indent": [1, 2, { "SwitchCase": 1 }],
 
     "no-restricted-properties": [2, {
       "property": "__defineGetter__",
