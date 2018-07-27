@@ -1,6 +1,6 @@
 import environment from './environment';
 import atkConfig from '../config/atk-config';
-import rule from '../config/ax-rule';
+import rule from '../config/rule';
 import devAccessConfig from '../config/access.dev';
 import stgAccessConfig from '../config/access.stg';
 import uatAccessConfig from '../config/access.uat';

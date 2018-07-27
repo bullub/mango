@@ -22,7 +22,7 @@ import eslint from 'gulp-eslint';
 
 const config = utils.getConfig();
 
-console.dir(config);
+// console.dir(config);
 
 
 gulp.task('default', function (next) {

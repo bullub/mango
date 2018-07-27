@@ -1,7 +1,7 @@
-import environment from './environment';
+import { getAccessEnvironment } from './environment';
 import config from './config';
 
 export default {
-  ...environment,
+  getAccessEnvironment,
   ...config
 };
