@@ -7,10 +7,10 @@ import { uglify } from 'rollup-plugin-uglify';
 import babel from 'rollup-plugin-babel';
 
 import environment from './environment';
-import configer from './config';
+// import configer from './config';
 
 const accessEnvironment = environment.getAccessEnvironment();
-const config = configer.getConfig();
+// const config = configer.getConfig();
 
 const rollupPlugins = [
   // tells Rollup how to find date-fns in node_modules
@@ -31,11 +31,7 @@ export default taskRollup;
 function taskRollup(stream) {
   return stream(rollup({
     external: ['eagle', 'jquery'],
-    plugins: [
-      resolve(), // tells Rollup how to find date-fns in node_modules
-      commonjs(), // converts date-fns to ES modules
-      babel()
-    ]
+    plugins: rollupPlugins
   }, {
     format: 'umd'
   }))
