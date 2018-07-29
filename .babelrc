@@ -20,9 +20,7 @@
         "moduleName": "babel-runtime"
       }
     ],
-    // 支持 对象解构
     "transform-object-rest-spread",
-    // 支持注解
     "transform-decorators"
   ]
 }
