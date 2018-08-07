@@ -14,7 +14,9 @@ function getAccessEnvironment() {
   let accessMatch = argStr.match(/--(\w{3})/i);
 
   if (!accessMatch || !accessMatch[1]) {
-    throw new Error("未指定访问环境，请指定构建的访问环境: --[dev|stg|uat|prd]");
+    console.warn('未传入构建环境，默认为dev环境');
+    accessMatch = ["","dev"];
+    // throw new Error("未指定访问环境，请指定构建的访问环境: --[dev|stg|uat|prd]");
   }
 
   return accessMatch[1];

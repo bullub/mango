@@ -6,6 +6,9 @@ import commonjs from 'rollup-plugin-commonjs';
 import { uglify } from 'rollup-plugin-uglify';
 import babel from 'rollup-plugin-babel';
 
+
+import sourcemaps from 'gulp-sourcemaps';
+
 import environment from './environment';
 // import configer from './config';
 
@@ -22,17 +25,19 @@ const rollupPlugins = [
 ];
 
 // UAT和PRD环境开启uglify
-if(accessEnvironment === 'uat' || accessEnvironment === 'prd') {
+if (accessEnvironment === 'uat' || accessEnvironment === 'prd') {
   rollupPlugins.push(uglify())
 }
 
 export default taskRollup;
 
 function taskRollup(stream) {
-  return stream(rollup({
-    external: ['eagle', 'jquery'],
-    plugins: rollupPlugins
-  }, {
-    format: 'umd'
-  }))
+  return stream.pipe(sourcemaps.init())
+    .pipe(rollup({
+      external: ['eagle', 'jquery'],
+      plugins: rollupPlugins
+    }, {
+      format: 'umd'
+    }))
+    .pipe(sourcemaps.write('./maps'));
 }

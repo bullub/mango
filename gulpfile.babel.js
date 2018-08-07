@@ -1,8 +1,8 @@
 import gulp from 'gulp';
 import sourcemaps from 'gulp-sourcemaps';
 
-// gulp与rollup结合使用的gulp插件
-import rollup from 'gulp-better-rollup';
+// 包装的工具引入
+import taskRollup from './builder/utils/task-rollup';
 
 // rollup打包部分会使用到的构建工具
 import resolve from 'rollup-plugin-node-resolve';
@@ -24,23 +24,37 @@ const config = utils.getConfig();
 
 // console.dir(config);
 
-
-gulp.task('default', function (next) {
-  return gulp.src('src/scripts/**/*.js', {
-    base: 'src'
-  })
-    .pipe(sourcemaps.init())
-    .pipe(
-      rollup({
-        external: ['eagle', 'jquery'],
-        plugins: [
-          resolve(), // tells Rollup how to find date-fns in node_modules
-          commonjs(), // converts date-fns to ES modules
-          babel()
-        ]
-      }, {
-        format: 'umd'
-      }))
-    .pipe(sourcemaps.write('../maps/', { addComment: false }))
-    .pipe(gulp.dest('dist'));
+gulp.task('mock-serve', function () {
+  return gulp.src('.')
+    .pipe(mockServer({
+      mockDir: './data',
+      livereload: true,
+      allowCrossOrigin: true,
+      proxies: [
+        {
+          source: '/me.do', target: 'http://localhost:8000/me.do',
+          options: {
+            headers: {
+              'Custom-Header': 'YES'
+            }
+          }
+        }
+      ]
+    }));
 });
+
+function buildJS() {
+  let stream = gulp.src('src/**/*.js');
+  // 通过rollup打包
+  taskRollup(stream);
+
+  stream.pipe('./dist');
+}
+
+function buildHTML() {
+
+}
+
+function buildCSS() {
+
+}
