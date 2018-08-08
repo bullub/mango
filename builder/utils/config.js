@@ -51,6 +51,7 @@ function getConfig() {
   let accessEnvironment = environment.getAccessEnvironment();
 
   switch (accessEnvironment) {
+    case "":
     case ENV_DEV:
     case ENV_STG:
     case ENV_UAT:
