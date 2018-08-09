@@ -13,12 +13,12 @@ module.exports = {
   // JavaScript 语言选项
   "parserOptions": {
     // ECMAScript 版本
-    "ecmaVersion": 7,
+    "ecmaVersion": 9,
     "sourceType": "module", // module
-    "ecmaFeatures": {
-      // 打开一些实验性的功能的校验
-      "experimentalObjectRestSpread": true
-    }
+    // "ecmaFeatures": {
+    //   // 打开一些实验性的功能的校验
+    //   "experimentalObjectRestSpread": true
+    // }
   },
   /**
    * "off" 或 0 - 关闭规则

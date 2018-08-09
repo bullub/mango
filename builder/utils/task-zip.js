@@ -7,10 +7,14 @@ import { getAccessEnvironment } from './environment';
 
 const pkgConf = require('../../package.json');
 
-function saveZip(stream){
+function saveZip() {
   let accessEnvironment = getAccessEnvironment();
 
-  return stream.pipe(zip(`${accessEnvironment}_${moment().format('YYYY-MM-DD hh:mm:ss')}.zip`))
+
+  return gulp.src([
+    'dist/**/*'
+  ])
+    .pipe(zip(`${accessEnvironment}_${moment().format('YYYY-MM-DD hh:mm:ss')}.zip`))
     .pipe(gulp.dest('./packages'))
     .pipe(rename(`${pkgConf.name}.latest.zip`))
     .pipe(gulp.dest('./packages'));

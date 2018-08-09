@@ -5,9 +5,11 @@ const Index = Eagle.extend({
   constructor: function Index() {
     Index._Parent(this, arguments);
   },
-  a: function a() {
+  b: function b() {
 
   }
 });
 
 new Index();
+
+export default Index;

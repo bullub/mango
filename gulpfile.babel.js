@@ -1,60 +1,44 @@
 import gulp from 'gulp';
-import sourcemaps from 'gulp-sourcemaps';
+import del from 'del';
 
 // 包装的工具引入
-import taskRollup from './builder/utils/task-rollup';
-
-// rollup打包部分会使用到的构建工具
-import resolve from 'rollup-plugin-node-resolve';
-import commonjs from 'rollup-plugin-commonjs';
-import { uglify } from 'rollup-plugin-uglify';
-import babel from 'rollup-plugin-babel';
-
-// 构建时需要使用的工具
-import utils from './builder/utils';
+import taskJS from './builder/utils/task-js';
+import taskHTML from './builder/utils/task-html';
+import environment from './builder/utils/environment';
 
 // 后台接口mock工具
 import mockServer from 'gulp-mock-server';
 
-// 使用eslint做代码风格检查
-import eslint from 'gulp-eslint';
-
-
-const config = utils.getConfig();
-
 // console.dir(config);
-
+// 启动
 gulp.task('mock-serve', function () {
   return gulp.src('.')
     .pipe(mockServer({
       mockDir: './data',
-      livereload: true,
-      allowCrossOrigin: true,
-      proxies: [
-        {
-          source: '/me.do', target: 'http://localhost:8000/me.do',
-          options: {
-            headers: {
-              'Custom-Header': 'YES'
-            }
-          }
-        }
-      ]
+      allowCrossOrigin: true
     }));
 });
 
-function buildJS() {
-  let stream = gulp.src('src/**/*.js');
-  // 通过rollup打包
-  taskRollup(stream);
+gulp.task('clean', function() {
+  return del('./dist', {force: true}).then(() => {
+    return gulp.src([
+      'src/**/*',
+      '!src/**/*.html',
+      '!src/**/*.ejs',
+      '!src/**/*.js'
+    ]).pipe(gulp.dest('./dist'));
+  });
+});
 
-  stream.pipe('./dist');
-}
 
-function buildHTML() {
+gulp.task('prd', gulp.series('clean', gulp.parallel(taskHTML, taskJS)));
+gulp.task('dev', gulp.series('clean', gulp.parallel(taskHTML, taskJS)));
+gulp.task('stg', gulp.series('clean', gulp.parallel(taskHTML, taskJS)));
+gulp.task('uat', gulp.series('clean', gulp.parallel(taskHTML, taskJS)));
 
-}
-
-function buildCSS() {
-
-}
+gulp.task('default', gulp.series(environment.getAccessEnvironment(), 'mock-serve', function watch(done) {
+  gulp.watch([
+    'src/**/*'
+  ], gulp.series(environment.getAccessEnvironment()));
+  done();
+}));
